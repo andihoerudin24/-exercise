@@ -4,3 +4,4 @@
         $this->load->library('upload', $config);
         $this->upload->do_upload('userfile');
         $uploads = $this->upload->data();
+ $uploads['file_name'];
