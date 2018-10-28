@@ -1,0 +1,26 @@
+function pegawai_csv() {
+        if (isset($_POST['submit'])) {
+            $filename=$_FILES["file"]["tmp_name"];
+             if($_FILES["file"]["size"] > 0)
+        {
+          $file = fopen($filename, "r");
+           while (($importdata = fgetcsv($file, 10000, ",")) !== FALSE)
+           {
+                  $data = array(
+                      'nama' => $importdata[0],
+                      'nomor' =>$importdata[1],
+                      );
+           $insert =  $this->db->insert('pegawai', $data);;
+           }                    
+            fclose($file);
+            redirect('Administrator/pegawai');
+        }else{
+            redirect('Administrator/pegawai');
+          }
+        }else{
+
+         $this->template->load('administrator/template', 'administrator/mod_pegawai/view_pegawai_csv');
+          
+        }
+
+    }
