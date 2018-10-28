@@ -7,6 +7,7 @@ function pegawai_csv() {
            while (($importdata = fgetcsv($file, 10000, ",")) !== FALSE)
            {
                   $data = array(
+                  //nama dan nomor adalah nama field di db
                       'nama' => $importdata[0],
                       'nomor' =>$importdata[1],
                       );
